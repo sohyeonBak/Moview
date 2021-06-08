@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans+KR:wght@300;400;500&display=swap");
+.loginzone {
+  font-family: "Noto Sans KR", sans-serif;
+  border: 1px solid #c4c4c4;
+  border-radius: 3px;
+  padding-top: 0.5rem;
+}
+
+.loginzone label {
+  margin-left: 1rem;
+}
+
+.loginzone input {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
+  width: 93%;
+  height: 45px;
+  border: 1px solid #c4c4c4;
+  background-color: #fff;
+  margin-bottom: 1rem;
+}
+
+.loginconfirm {
+  font-family: "Noto Sans KR", sans-serif;
+  text-align: right;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.loginconfirm .signtoup {
+  display: inline-block;
+  width: 20%;
+  height: 40px;
+  background-color: #c4c4c4;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
+.loginconfirm .finallogin {
+  width: 20%;
+  margin-left: 1rem;
+  background-color: #156015;
+  display: inline-block;
+  color: #ffffff;
+  text-align: center;
+  height: 40px;
+  vertical-align: middle;
+  line-height: 40px;
+}
+/*# sourceMappingURL=login.module.css.map */

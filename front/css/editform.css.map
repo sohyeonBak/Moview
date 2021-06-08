@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "ACAA,OAAO,CAAC,uHAAI",
+    "sources": [
+        "../style/editform.scss",
+        "../style/reset.scss",
+        "../style/_layout.scss"
+    ],
+    "names": [],
+    "file": "editform.css"
+}

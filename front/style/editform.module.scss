@@ -1,0 +1,88 @@
+@import "./reset.scss";
+@import "./layout";
+
+.editform {
+  width: 100%;
+  background-color: #ffffff;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 3px;
+  font-family: $defaultFont;
+  .editcon {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 1rem;
+    .edittitle {
+      width: 91%;
+      height: 45px;
+      border: 1px solid #c4c4c4;
+      padding-left: 1rem;
+    }
+    textarea {
+      width: 91%;
+      height: 245px;
+      border: 1px solid #c4c4c4;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      padding-left: 1rem;
+    }
+    .editfile {
+      display: none;
+    }
+    .editfilebtn {
+      margin-top: 0.8rem;
+      text-align: left;
+      height: 45px;
+      width: 95%;
+      background-color: #c4c4c4;
+      padding-left: 1rem;
+      line-height: 45px;
+      span {
+        vertical-align: middle;
+        padding-right: 0.5rem;
+      }
+    }
+  }
+  .roadimage {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid #c4c4c4;
+    padding-bottom: 1rem;
+    button {
+      width: 15%;
+      height: 35px;
+      margin-left: 0.5rem;
+      background-color: #156015;
+      color: #ffffff;
+    }
+  }
+  p {
+    padding-top: 2rem;
+    text-align: center;
+  }
+  .starzone {
+    padding-top: 0.5rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    .starline {
+      width: 30%;
+      .stars {
+        display: inline-block;
+        width: 20%;
+      }
+    }
+  }
+}
+.finalbtn {
+  text-align: right;
+  button {
+    width: 15%;
+    height: 35px;
+
+    background-color: #156015;
+    color: #ffffff;
+    margin-top: 1rem;
+  }
+}

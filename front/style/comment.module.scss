@@ -1,0 +1,56 @@
+@import "./reset.scss";
+@import "./layout";
+
+.comments {
+  width: 100%;
+  border: 0.5px solid #c4c4c4;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin-top: 10px;
+  font-family: $defaultFont;
+  .commentslist {
+    background-color: #ffffff;
+    li {
+      display: flex;
+      border-bottom: 0.5px solid #c4c4c4;
+      height: 40px;
+      line-height: 40px;
+      .commentsname {
+        flex: 1 1 10%;
+        font-size: 14px;
+        color: #c4c4c4;
+        padding-left: 1.5rem;
+        border-right: 1px solid #c4c4c4;
+      }
+      .commentscon {
+        flex: 1 1 65%;
+        padding-left: 1rem;
+      }
+      .likey {
+        flex: 1 1 15%;
+        padding-right: 1rem;
+        text-align: right;
+        padding-top: 0.3em;
+      }
+    }
+  }
+  .commentedit {
+    height: 55px;
+    padding-left: 1rem;
+    div {
+      margin-top: 1rem;
+      input {
+        width: 77%;
+        height: 35px;
+        border: 1px solid #c4c4c4;
+      }
+      button {
+        width: 15%;
+        height: 35px;
+        margin-left: 0.5rem;
+        background-color: #156015;
+        color: #ffffff;
+      }
+    }
+  }
+}

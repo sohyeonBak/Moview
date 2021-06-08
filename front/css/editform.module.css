@@ -1,0 +1,105 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans+KR:wght@300;400;500&display=swap");
+.editform {
+  width: 100%;
+  background-color: #ffffff;
+  border: 0.5px solid #c4c4c4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 3px;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.editform .editcon {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 1rem;
+}
+
+.editform .editcon .edittitle {
+  width: 91%;
+  height: 45px;
+  border: 1px solid #c4c4c4;
+  padding-left: 1rem;
+}
+
+.editform .editcon textarea {
+  width: 91%;
+  height: 245px;
+  border: 1px solid #c4c4c4;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  padding-left: 1rem;
+}
+
+.editform .editcon .editfile {
+  display: none;
+}
+
+.editform .editcon .editfilebtn {
+  margin-top: 0.8rem;
+  text-align: left;
+  height: 45px;
+  width: 95%;
+  background-color: #c4c4c4;
+  padding-left: 1rem;
+  line-height: 45px;
+}
+
+.editform .editcon .editfilebtn span {
+  vertical-align: middle;
+  padding-right: 0.5rem;
+}
+
+.editform .roadimage {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  border-bottom: 1px solid #c4c4c4;
+  padding-bottom: 1rem;
+}
+
+.editform .roadimage button {
+  width: 15%;
+  height: 35px;
+  margin-left: 0.5rem;
+  background-color: #156015;
+  color: #ffffff;
+}
+
+.editform p {
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.editform .starzone {
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.editform .starzone .starline {
+  width: 30%;
+}
+
+.editform .starzone .starline .stars {
+  display: inline-block;
+  width: 20%;
+}
+
+.finalbtn {
+  text-align: right;
+}
+
+.finalbtn button {
+  width: 15%;
+  height: 35px;
+  background-color: #156015;
+  color: #ffffff;
+  margin-top: 1rem;
+}
+/*# sourceMappingURL=editform.module.css.map */

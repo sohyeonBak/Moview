@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans+KR:wght@300;400;500&display=swap");
+.profile {
+  width: 100%;
+  border: 0.5px solid #c4c4c4;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.profile .userinfo {
+  border-bottom: 0.5px solid #c4c4c4;
+  padding-left: 1rem;
+  padding-bottom: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.profile .userinfo h3 {
+  padding-top: 0.5rem;
+}
+
+.profile .userinfo form {
+  padding-top: 0.5rem;
+}
+
+.profile .userinfo form input {
+  width: 77%;
+  height: 45px;
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+}
+
+.profile .userinfo form button {
+  width: 15%;
+  height: 45px;
+  margin-left: 0.5rem;
+  background-color: #156015;
+  color: #ffffff;
+}
+
+.profile .userreview {
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.profile .userreview p {
+  padding-top: 0.5rem;
+  font-size: 16px;
+}
+
+.profile .userreview ul {
+  padding-top: 0.5rem;
+}
+
+.profile .userreview ul li {
+  margin-bottom: 0.5rem;
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  height: 70px;
+  width: 90%;
+  font-size: 14px;
+  width: 92%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 1rem;
+}
+
+.profile .userreview ul li .title {
+  line-height: 70px;
+  padding-left: 1rem;
+}
+
+.profile .userreview ul li .con {
+  line-height: 70px;
+  padding-left: 3rem;
+  color: #c4c4c4;
+}
+/*# sourceMappingURL=profile.module.css.map */

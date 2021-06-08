@@ -1,0 +1,14 @@
+.allcontents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+}
+
+.allcontents div {
+  width: 600px;
+}
+/*# sourceMappingURL=contents.module.css.map */

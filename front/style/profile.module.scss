@@ -1,0 +1,68 @@
+@import "./reset.scss";
+@import "./layout";
+
+.profile {
+  width: 100%;
+  border: 0.5px solid #c4c4c4;
+  font-family: $defaultFont;
+  .userinfo {
+    border-bottom: 0.5px solid #c4c4c4;
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    box-sizing: border-box;
+
+    h3 {
+      padding-top: 0.5rem;
+    }
+    form {
+      padding-top: 0.5rem;
+      input {
+        width: 77%;
+        height: 45px;
+        background-color: #ffffff;
+        border: 1px solid #c4c4c4;
+      }
+      button {
+        width: 15%;
+        height: 45px;
+        margin-left: 0.5rem;
+        background-color: #156015;
+        color: #ffffff;
+      }
+    }
+  }
+  .userreview {
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    p {
+      padding-top: 0.5rem;
+      font-size: 16px;
+    }
+    ul {
+      padding-top: 0.5rem;
+      li {
+        margin-bottom: 0.5rem;
+        background-color: #fff;
+        border: 1px solid #c4c4c4;
+        height: 70px;
+        width: 90%;
+        font-size: 14px;
+        width: 92%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 1rem;
+        .title {
+          line-height: 70px;
+          padding-left: 1rem;
+        }
+        .con {
+          line-height: 70px;
+          padding-left: 3rem;
+          color: #c4c4c4;
+        }
+      }
+    }
+  }
+}

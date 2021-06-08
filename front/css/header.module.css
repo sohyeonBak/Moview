@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@500&family=Noto+Sans+KR:wght@300;400;500&display=swap");
+.allheader {
+  height: 80px;
+  border-bottom: 1px solid #c4c4c4;
+}
+
+.layout {
+  position: relative;
+  margin: 0 auto;
+  width: 1280px;
+}
+
+.layout .header {
+  height: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row nowrap;
+          flex-flow: row nowrap;
+  width: 100%;
+}
+
+.layout .header .homebtn {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 40%;
+          flex: 1 1 40%;
+}
+
+.layout .header .homebtn h1 {
+  font-family: "Josefin Sans", sans-serif;
+  line-height: 80px;
+  padding-left: 1rem;
+}
+
+.layout .header .homebtn h1 a {
+  color: #db0000;
+}
+
+.layout .header .searchcon {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 2 15%;
+          flex: 1 2 15%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
+.layout .header .searchcon form {
+  width: 340px;
+}
+
+.layout .header .searchcon form input {
+  width: 80%;
+  height: 40px;
+  background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 3px;
+  padding-left: 0.5rem;
+}
+
+.layout .header .searchcon form ::-webkit-input-placeholder {
+  color: #c4c4c4;
+}
+
+.layout .header .searchcon form :-ms-input-placeholder {
+  color: #c4c4c4;
+}
+
+.layout .header .searchcon form ::-ms-input-placeholder {
+  color: #c4c4c4;
+}
+
+.layout .header .searchcon form ::placeholder {
+  color: #c4c4c4;
+}
+
+.layout .header .searchcon form button {
+  width: 45px;
+  height: 40px;
+  margin-left: -2px;
+  vertical-align: bottom;
+  background-color: #c4c4c4;
+  border: 1px solid #c4c4c4;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 0px 3px 3px 0px;
+}
+
+.layout .header .searchcon form button span {
+  color: #ffffff;
+}
+
+.layout .header .menubtns {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 45%;
+          flex: 1 1 45%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  font-family: "Noto Sans KR", sans-serif;
+  padding-right: 1rem;
+}
+
+.layout .header .menubtns li {
+  line-height: 80px;
+  padding-left: 0.7rem;
+}
+
+.layout .header .menubtns li a {
+  text-overflow: ellipsis;
+}
+
+.layout .header .menubtns .login,
+.layout .header .menubtns .signup {
+  -ms-flex-negative: 2;
+      flex-shrink: 2;
+}
+
+.layout .header .menubtns .review,
+.layout .header .menubtns .mypage {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  font-size: 30px;
+  padding-top: 0.2rem;
+}
+
+.layout .header .menubtns .review span,
+.layout .header .menubtns .mypage span {
+  font-size: 30px;
+}
+
+@media (max-width: 1280px) {
+  .layout {
+    width: 100%;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 757px) {
+  .layout .header .searchcon {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 2 10%;
+            flex: 1 2 10%;
+  }
+  .layout .header .searchcon form {
+    width: 300px;
+  }
+  .layout .header .searchcon form input {
+    width: 70%;
+  }
+}
+/*# sourceMappingURL=header.module.css.map */
