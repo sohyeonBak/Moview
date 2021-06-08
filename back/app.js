@@ -4,6 +4,9 @@ const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv')
+const morgan = require('morgan');
+const hpp = require('hpp');
+const helmet = require('helmet');
 
 const cardRouter = require('./routes/card');
 const cardsRouter = require('./routes/cards');
@@ -22,8 +25,15 @@ db.sequelize.sync()
 
 passportConfig();
 
+if(process.env.NODE_ENV === 'production'){
+    app.use(morgan('combined'))
+    app.use(hpp());
+    app.use(helmet())
+}else{
+    app.use(morgan('dev'))
+}
 app.use(cors({
-    origin: 'http://localhost:3001',
+    origin: 'http://localhost:3060',
     credentials: true
 }))
 app.use(express.json());
