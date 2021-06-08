@@ -33,7 +33,7 @@ if(process.env.NODE_ENV === 'production'){
     app.use(morgan('dev'))
 }
 app.use(cors({
-    origin: 'http://localhost:3060',
+    origin: ['http://localhost:3060', 'http://13.209.3.90'],
     credentials: true
 }))
 app.use(express.json());
