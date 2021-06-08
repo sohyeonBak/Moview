@@ -2,8 +2,9 @@ import { all, fork } from '@redux-saga/core/effects';
 import userSaga from './user';
 import cardSaga from './card';
 import axios from 'axios';
+import { backURL } from '../config/config';
 
-axios.defaults.baseURL = 'http://localhost:3065'
+axios.defaults.baseURL = backURL;
 axios.defaults.withCredentials = true;
 
 export default function* rootSaga() {
