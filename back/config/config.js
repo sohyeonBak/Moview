@@ -12,14 +12,14 @@ module.exports = {
   },
   "test": {
     "username": "root",
-    "password": process.env.DB_PASSWORD,
+    "password": null,
     "database": "movie-review",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
     "username": "root",
-    "password": process.env.DB_PASSWORD,
+    "password": null,
     "database": "movie-review",
     "host": "127.0.0.1",
     "dialect": "mysql"
