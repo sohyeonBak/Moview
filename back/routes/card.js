@@ -1,9 +1,41 @@
 const express = require('express');
 const { Card, User, Comment, Image } = require('../models');
-// const {isLoggedIn} =require('./middlewares');
+const {isLoggedIn} =require('./middlewares');
 
 const router = express.Router()
 
+
+router.post('/', isLoggedIn, async (req, res, next) => {
+    try {
+        const card = await Card.create({
+            content: req.body.content,
+            title: req.body.title,
+            star: req.body.star,
+            UserId :req.user.id
+        })
+        const cardContent = await Card.findOne({
+            where: {id : card.id},
+            attributes: {
+                exclude: ['createdAt', 'updatedAt']
+              },
+            include: [{
+                model: User,
+                attributes: ['id', 'nickname']
+            },{
+                model: Comment,
+                include : [{
+                    model: User,
+                    attributes: ['id', 'nickname']
+                }]
+            }]
+        })
+        
+        res.status(201).json(cardContent);
+    } catch(error) {
+        console.error(error);
+        next(error);
+    }
+});
 
 router.get('/:cardId', async (req, res, next) => {
     try{
@@ -43,55 +75,7 @@ router.get('/:cardId', async (req, res, next) => {
     }
 })
 
-
-router.post('/', async (req, res, next) => {
-    try {
-        const card = await Card.create({
-            content: req.body.content,
-            title: req.body.title,
-            star: req.body.star,
-            UserId :req.body.User.id
-        })
-        const cardContent = await Card.findOne({
-            where: {id : card.id},
-            attributes: {
-                exclude: ['createdAt', 'updatedAt']
-              },
-            include: [{
-                model: User,
-                attributes: ['id', 'nickname']
-            },{
-                model: Comment,
-                include : [{
-                    model: User,
-                    attributes: ['id', 'nickname']
-                }]
-            }]
-        })
-        
-        res.status(201).json(cardContent);
-    } catch(error) {
-        console.error(error);
-        next(error);
-    }
-});
-
-router.delete('/:cardId', async (req, res, next) => {
-    try{
-        await Card.destroy({
-            where: {
-                id: req.params.cardId,
-                UserId: req.user.id
-            }
-        })
-        res.json({CardId: req.params.cardId,})
-    }catch(error) {
-        console.error(error);
-        next(error)
-    }
-})
-
-router.post('/:cardId/comment', async (req, res, next) => {
+router.post('/:cardId/comment', isLoggedIn, async (req, res, next) => {
     try{
         const card = await Card.findOne({
             where: { id: req.params.cardId}
@@ -102,7 +86,7 @@ router.post('/:cardId/comment', async (req, res, next) => {
         const comment = await Comment.create({
             content: req.body.content,
             CardId: parseInt(req.params.cardId, 10),
-            UserId: req.body.User.id
+            UserId: req.user.id
         })
         const CardComment = await Comment.findOne({
             where: {id: comment.id},
@@ -118,6 +102,7 @@ router.post('/:cardId/comment', async (req, res, next) => {
         next(error);
     }
 })
+
 
 router.patch('/:cardId/agree', async (req, res, next) => {
     try{
@@ -184,6 +169,21 @@ router.delete('/:cardId/disagree', async (req, res, next) => {
     } catch(error) {
         console.error(error);
         next(error);
+    }
+})
+
+router.delete('/:cardId', isLoggedIn, async (req, res, next) => {
+    try{
+        await Card.destroy({
+            where: {
+                id: req.params.cardId,
+                UserId: req.user.id
+            }
+        })
+        res.json({CardId: req.params.cardId,})
+    }catch(error) {
+        console.error(error);
+        next(error)
     }
 })
 

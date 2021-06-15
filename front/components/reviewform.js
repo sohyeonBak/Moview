@@ -51,9 +51,9 @@ const ReviewForm = () => {
 
     const onCardUpload = useCallback((e)=>{
         e.preventDefault();
-        dispatch(addCard({title, content, User : {id : me.id}, star: rating}))
+        dispatch(addCard({title, content, star: rating}))
         
-    },[title, content, me, rating])
+    },[title, content, rating])
     
     
     return(

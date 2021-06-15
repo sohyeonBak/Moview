@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 const { User, Card } = require('../models');
+const { isLoggedIn, isNotLoggedIn } = require('./middlewares');
 const router = express.Router();
 
 
@@ -30,29 +31,6 @@ router.get('/', async (req, res, next) => {
     next(error)
   }
 })
-
-router.post('/', async (req, res, next) => {
-    try {
-        const exUser = await User.findOne({
-          where: {
-            email: req.body.email,
-          }
-        });
-        if (exUser) {
-          return res.status(403).send('이미 사용 중인 아이디입니다.');
-        }
-        const hashedPassword = await bcrypt.hash(req.body.password, 12);
-        await User.create({
-          email: req.body.email,
-          nickname: req.body.nickname,
-          password: hashedPassword,
-        });
-        res.status(201).send('ok');
-      } catch (error) {
-        console.error(error);
-        next(error); // status 500
-      }
-});
 
 
 router.post('/login', (req, res, next) => {
@@ -86,14 +64,38 @@ router.post('/login', (req, res, next) => {
 });
 
 
-router.post('/logout', (req, res) => {
+
+router.post('/', isNotLoggedIn, async (req, res, next) => {
+  try {
+      const exUser = await User.findOne({
+        where: {
+          email: req.body.email,
+        }
+      });
+      if (exUser) {
+        return res.status(403).send('이미 사용 중인 아이디입니다.');
+      }
+      const hashedPassword = await bcrypt.hash(req.body.password, 12);
+      await User.create({
+        email: req.body.email,
+        nickname: req.body.nickname,
+        password: hashedPassword,
+      });
+      res.status(201).send('ok');
+    } catch (error) {
+      console.error(error);
+      next(error); // status 500
+    }
+});
+
+router.post('/logout', isLoggedIn, (req, res) => {
   req.logout();
   req.session.destroy();
   res.status(200).send('ok');
 });
 
 
-router.patch('/nickname', async (req, res, next) => {
+router.patch('/nickname', isLoggedIn, async (req, res, next) => {
   try{
     await User.update({
       nickname : req.body.nickname
