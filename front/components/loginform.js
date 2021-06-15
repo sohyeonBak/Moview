@@ -12,7 +12,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const { logInError, loginDone} = useSelector((state)=>state.user);
+    const { logInError, logInDone } = useSelector((state)=>state.user);
 
     useEffect(() => {
         if (logInError) {
@@ -21,10 +21,10 @@ const LoginForm = () => {
       }, [logInError]);
 
       useEffect(() => {
-        if (loginDone) {
+        if (logInDone) {
           Router.push('/')
         }
-      }, [loginDone]);
+      }, [logInDone]);
 
     const onChangeId = useCallback((e)=>{
         setEmail(e.target.value)
