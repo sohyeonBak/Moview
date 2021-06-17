@@ -3,7 +3,7 @@ const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 const morgan = require('morgan');
 const hpp = require('hpp');
 const helmet = require('helmet');
@@ -28,7 +28,7 @@ passportConfig();
 if(process.env.NODE_ENV === 'production'){
     app.use(morgan('combined'))
     app.use(hpp());
-    app.use(helmet())
+    app.use(helmet());
 }else{
     app.use(morgan('dev'))
 }
@@ -55,6 +55,6 @@ app.use('/card', cardRouter);
 app.use('/cards', cardsRouter);
 app.use('/user', userRouter);
 
-app.listen(80, () => {
+app.listen(3065, () => {
     console.log('서버 실행 중')
 })
