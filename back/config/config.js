@@ -18,7 +18,7 @@ module.exports = {
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
+    "username": "back",
     "password": process.env.DB_PASSWORD,
     "database": "moview",
     "host": "13.125.136.244",
