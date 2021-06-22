@@ -1,5 +1,5 @@
-import produce from 'immer';
-import shortId from 'shortid';
+import produce from '../util/produce';
+
 
 export const initialState = {
  mainCards : [],
