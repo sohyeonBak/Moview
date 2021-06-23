@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "dev": "nodemon app",
+    "dev": "nodemon app ",
     "start": "cross-env NODE_ENV=production pm2 start app.js"
   },
   "author": "sohyeonbak",
@@ -23,7 +23,7 @@
     "mysql2": "^2.2.5",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
-    "pm2": "^5.0.0",
+    "pm2": "^5.1.0",
     "sequelize": "^6.6.2",
     "sequelize-cli": "^6.2.0"
   },
