@@ -34,7 +34,7 @@ if(process.env.NODE_ENV === 'production'){
     app.use(morgan('dev'));
 }
 app.use(cors({
-    origin: ['http://localhost:3060', 'http://13.209.3.90'],
+    origin: ['http://localhost:3060', 'http://fromtulip.com'],
     credentials: true
 }))
 app.use(express.json());
@@ -44,6 +44,11 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        domain: process.env.NODE_ENV === 'production' && '.fromtulip.com'
+    }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
