@@ -123,12 +123,12 @@ const ReviewCard = ({card}) => {
                     </div>
                     <div className={Card.comment}>
                         <span onClick={onComment} className="material-icons">chat_bubble_outline</span>
-                        {me
+                        {me.id === User.id
                         ? (<>
                             <span className="material-icons">edit</span>
                             <span onClick={onDeleteCard} className="material-icons">remove_circle_outline</span>
                         </>)
-                        : (<span className="material-icons">report_gmailerrorred</span>)
+                        : ''
                         }
                     </div>
                 </div>
