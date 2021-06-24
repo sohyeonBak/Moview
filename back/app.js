@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const passport = require('passport');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-const hpp = require('hpp');
-const helmet = require('helmet');
+const helmet =require('helmet')
+const hpp =require('hpp')
 
 const cardRouter = require('./routes/card');
 const cardsRouter = require('./routes/cards');
@@ -29,15 +29,18 @@ if(process.env.NODE_ENV === 'production'){
     app.use(morgan('combined'));
     app.use(hpp());
     app.use(helmet());
-    
+    app.use(cors({
+        origin: 'http://fromtulip.com',
+        credentials: true
+    }))
 }else{
     app.use(morgan('dev'));
-    
+    app.use(cors({
+        origin: true,
+        credentials: true
+    }))
 }
-app.use(cors({
-    origin: 'http://fromtulip.com',
-    credentials: true
-}))
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
@@ -46,10 +49,10 @@ app.use(session({
     saveUninitialized: false,
     resave: false,
     secret: process.env.COOKIE_SECRET,
-    cookie: {
-        httpOnly: true,
-        secure: false,
-        domain: process.env.NODE_ENV === 'production' && '.fromtulip.com'
+    cookie:{
+        httpOnly:true,
+        secure:false,
+        domain: process.env.NODE_ENV === 'production' && 'fromtulip.com'
     }
 }));
 app.use(passport.initialize());
