@@ -22,7 +22,7 @@ const ReviewForm = () => {
         if(addCardDone){
             Router.replace('/')
         }
-    },[addCardDone])
+    },[])
 
     const onChangeTitle = useCallback((e)=> {
         setTitle(e.target.value)
