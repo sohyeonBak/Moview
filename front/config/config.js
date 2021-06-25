@@ -1,1 +1,1 @@
-export const backURL = 'http://api.fromtulip.com/';
+export const backURL = 'http://api.fromtulip.com';
