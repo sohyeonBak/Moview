@@ -29,14 +29,11 @@ if(process.env.NODE_ENV === 'production'){
     app.use(morgan('combined'));
     app.use(hpp());
     app.use(helmet());
-    
 }else{
-    app.use(morgan('dev'));
-    
+    app.use(morgan('dev'));   
 }
-
 app.use(cors({
-    origin: ['http://localhost:3060', 'http://3.36.89.24', 'http://fromtulip.com'],
+    origin: ['http://localhost:3060', 'http://fromtulip.com'],
     credentials: true
 }))
 app.use(express.json());
