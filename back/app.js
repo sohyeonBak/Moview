@@ -36,7 +36,7 @@ if(process.env.NODE_ENV === 'production'){
 }
 
 app.use(cors({
-    origin: ['http://localhost:3060', 'http://fromtulip.com'],
+    origin: ['http://localhost:3060', 'http://3.36.89.24', 'http://fromtulip.com'],
     credentials: true
 }))
 app.use(express.json());
