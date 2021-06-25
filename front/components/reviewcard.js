@@ -141,7 +141,7 @@ const ReviewCard = ({card}) => {
                         })}
                     </div>
                     <p>{card?.content}</p>
-                    <em>{moment(card.createdAt).format('YYYY.MM.DD')}</em>
+                    <em>{moment(card?.createdAt).format('YYYY.MM.DD')}</em>
                 </div>
             </div>
             {comment&&<Comment card={card} />}
