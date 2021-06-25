@@ -134,7 +134,7 @@ const ReviewCard = ({card}) => {
                 </div>
                 <div className={Card.reviewconent}>
                     <div className={Card.star}>
-                        {[1, 2, 3, 4, 5].map((inx)=> {
+                        {[1, 2, 3, 4, 5]?.map((inx)=> {
                             return (
                                 <Stars index={inx} card={card}/>
                             )
