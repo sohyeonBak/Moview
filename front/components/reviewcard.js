@@ -26,8 +26,8 @@ const ReviewCard = ({card}) => {
 
     useEffect(()=>{
         console.log(card)
-        const findLikers = card?.Likers.map((v)=>v.id===me?.id)
-        const findUnLikers = card?.UnLikers.map((v)=>v.id===me?.id)
+        const findLikers = card?.Likers?.map((v)=>v.id===me?.id)
+        const findUnLikers = card?.UnLikers?.map((v)=>v.id===me?.id)
         if(findLikers?.includes(true)===true){
             ThumbUp(true);
         }else{
