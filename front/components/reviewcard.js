@@ -123,7 +123,7 @@ const ReviewCard = ({card}) => {
                     </div>
                     <div className={Card.comment}>
                         <span onClick={onComment} className="material-icons">chat_bubble_outline</span>
-                        {me.id === card?.User.id
+                        {me?.id === card?.User.id
                         ? (<>
                             <span className="material-icons">edit</span>
                             <span onClick={onDeleteCard} className="material-icons">remove_circle_outline</span>
