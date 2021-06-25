@@ -1,19 +1,29 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Header from '../style/header.module.scss';
 import Content from '../style/contents.module.scss';
-
+import Router from 'next/router';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRequestAction } from '../reducers/user';
 
 const AppLayout = ({children}) => {
-    const { me } = useSelector((state) => state.user);
+    const { me, logOutDone } = useSelector((state) => state.user);
     const dispatch = useDispatch()
     
+    const goHome = useCallback(()=>{
+        Router.push('/')
+    },[])
+
     const onLogout = useCallback(()=>{
         dispatch(logoutRequestAction())
+    },[])
+
+    useEffect(()=>{
+        if(logOutDone){
+            Router.push('/')
+        }
     },[])
 
     return(
@@ -22,7 +32,7 @@ const AppLayout = ({children}) => {
                 <div className={Header.header}>
                     <div className={Header.homebtn}>
                         <h1>
-                            <Link href="/"><a>MOVIEW</a></Link>
+                            <a onClick={goHome}>MOVIEW</a>
                         </h1>
                     </div>
                     <div className={Header.searchcon}>
@@ -36,9 +46,7 @@ const AppLayout = ({children}) => {
                     {me 
                     ? (<ul className={Header.menubtns}>
                         <li>
-                            <Link href="/">
-                                <a onClick={onLogout}>로그아웃</a>
-                            </Link>
+                            <a onClick={onLogout}>로그아웃</a>
                         </li>
                         <li className={Header.review}>
                             <Link href="/editreview">
