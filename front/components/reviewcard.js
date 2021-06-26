@@ -106,7 +106,7 @@ const ReviewCard = ({card}) => {
                     <p>{card?.User.nickname}</p>
                 </div>
                 <div className={Card.cardImage}>
-                    <img src={`${card?.Images[0]?.src}`} alt={card?.Images[0]?.src} />
+                    <img src={`${card?.Images?.src}`} alt={card?.Images?.src} />
                 </div>
                 <div className={Card.cardReaction} >
                     <div className={Card.like} >
