@@ -1,21 +1,18 @@
 import React, { useCallback, useState, useRef, useEffect } from 'react';
 import Router from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCard } from '../reducers/card';
+import { addCard, ADD_CARD_REQUEST, REMOVE_IMAGE, UPLOAD_IMAGE_REQUEST } from '../reducers/card';
 import Edit from '../style/editform.module.scss';
 import StarsForm from './starsform';
 
 const ReviewForm = () => {
     const [ title, setTitle ] = useState('');
     const [ content, setContent ] = useState('');
-    const [ imagePath, setImagePath ] = useState(false);
     const [ rating, setRating ] = useState(0);
     const [ hoverRating, setHoverRating ] = useState(0);
     const imageRef = useRef()
     
-    
-    const { me } = useSelector((state) => state.user);
-    const { addCardDone } = useSelector((state)=> state.card);
+    const { addCardDone, imagePaths } = useSelector((state)=> state.card);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -32,14 +29,27 @@ const ReviewForm = () => {
         setContent(e.target.value)
     },[])
 
-    const onImageFile = useCallback(()=>{
-        console.log('hi')
-    },[])
-
     const onPickImage = useCallback((e)=>{
         e.preventDefault()
-        setImagePath(true)
         imageRef.current.click();
+    },[imageRef.current])
+
+    const onChangeImage = useCallback((e)=>{
+        const imageFormData = new FormData();
+        [].forEach.call(e.target.files, (f) => {
+            imageFormData.append('image', f)
+        });
+        dispatch({
+            type: UPLOAD_IMAGE_REQUEST,
+            data: imageFormData
+        })
+    },[])
+
+    const onRemoveImage = useCallback((index)=>()=>{
+        dispatch({
+            type: REMOVE_IMAGE,
+            data: index
+        })
     },[])
 
     const onHoverStar = (index) => setHoverRating(index)
@@ -51,9 +61,19 @@ const ReviewForm = () => {
 
     const onCardUpload = useCallback((e)=>{
         e.preventDefault();
-        dispatch(addCard({title, content, star: rating}))
+        const formData = new FormData();
+        imagePaths.forEach((p)=>{
+            formData.append('image', p);
+        });
+        formData.append('title', title);
+        formData.append('content', content);
+        formData.append('star', rating);
+        dispatch({
+            type: ADD_CARD_REQUEST,
+            data: formData
+        })
         
-    },[title, content, rating])
+    },[title, content, rating, imagePaths])
     
     
     return(
@@ -62,16 +82,18 @@ const ReviewForm = () => {
                 <div className={Edit.editcon} >
                     <input type="text" className={Edit.edittitle} placeholder="제목" value={title} onChange={onChangeTitle} />
                     <textarea placeholder="리뷰 내용을 입력해주세요" value={content} onChange={onChangeContent} />
-                    <input type="file" className={Edit.editfile} ref={imageRef} onClick={onImageFile} />
+                    <input type="file" name="image" className={Edit.editfile} ref={imageRef} onChange={onChangeImage} />
                     <button className={Edit.editfilebtn} onClick={onPickImage}>
                         <span className="material-icons">folder_open</span>
                         업로드할 이미지를 선택해주세요
                     </button>
                 </div>
-                {imagePath&&<div className={Edit.roadimage}>
-                    <img src="" alt="" />
-                    <button>제거</button>
-                </div>}
+                {imagePaths.map((v,i)=>{
+                    <div key={v} className={Edit.roadimage}>
+                        <img src={v.replace(/\/thumb\//, '/original/')} alt={v} />
+                        <button onClick={onRemoveImage(i)}>제거</button>
+                    </div>
+                })}
                 <p>별점을 채워주세요.</p>
                 <div className={Edit.starzone}>
                     <div className={Edit.starline}>

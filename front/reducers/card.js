@@ -33,6 +33,10 @@ export const initialState = {
  removeDisagreeCardLoading: false,
  removeDisagreeCardDone: false,
  removeDisagreeCardError: null,
+ uploadImageLoading: false,
+ uploadImageDone: false,
+ uploadImageError: null,
+ 
 }
 
 export const LOAD_CARD_REQUEST = 'LOAD_CARD_REQUEST';
@@ -71,7 +75,15 @@ export const REMOVE_DISAGREE_CARD_REQUEST = 'REMOVE_DISAGREE_CARD_REQUEST';
 export const REMOVE_DISAGREE_CARD_SUCCESS = 'REMOVE_DISAGREE_CARD_SUCCESS';
 export const REMOVE_DISAGREE_CARD_FAILURE = 'REMOVE_DISAGREE_CARD_FAILURE';
 
+export const UPLOAD_IMAGE_REQUEST = 'UPLOAD_IMAGE_REQUEST';
+export const UPLOAD_IMAGE_SUCCESS = 'UPLOAD_IMAGE_SUCCESS';
+export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE';
 
+export const UPLOAD_IMAGE_REQUEST = 'UPLOAD_IMAGE_REQUEST';
+export const UPLOAD_IMAGE_SUCCESS = 'UPLOAD_IMAGE_SUCCESS';
+export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE';
+
+export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
 export const addCard = (data) => ({
     type: ADD_CARD_REQUEST,
@@ -221,7 +233,24 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
             draft.disagreeCardLoading = false;
             draft.disagreeCardError = action.error;
         break;
-        
+        case UPLOAD_IMAGE_REQUEST:
+            draft.uploadImageLoading = true;
+            draft.uploadImageDone = false;
+            draft.uploadImageError = null;
+        break;
+        case UPLOAD_IMAGE_SUCCESS:{
+            draft.imagePaths = action.data;
+            draft.uploadImageLoading = false;
+            draft.uploadImageDone = true;
+        }
+        break;
+        case UPLOAD_IMAGE_FAILURE:
+            draft.uploadImageLoading = false;
+            draft.uploadImageError = action.error;
+        break;
+        case REMOVE_IMAGE:
+            draft.imagePaths = draft.imagePaths.filter((v, i) => i !== action.data);
+        break;
         default:
             break;
     }

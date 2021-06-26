@@ -9,7 +9,8 @@ import {
     LOAD_CARDS_SUCCESS, LOAD_CARDS_FAILURE, LOAD_CARDS_REQUEST, 
     ADD_CARD_SUCCESS, ADD_CARD_FAILURE, ADD_CARD_REQUEST, 
     REMOVE_CARD_REQUEST, REMOVE_CARD_SUCCESS, REMOVE_CARD_FAILURE, 
-    LOAD_CARD_REQUEST, LOAD_CARD_SUCCESS, LOAD_CARD_FAILURE,
+    LOAD_CARD_REQUEST, LOAD_CARD_SUCCESS, LOAD_CARD_FAILURE, 
+    UPLOAD_IMAGE_REQUEST, UPLOAD_IMAGE_SUCCESS, UPLOAD_IMAGE_FAILURE,
 } from "../reducers/card";
 import { ADD_CARD_TO_ME, REMOVE_CARD_TO_ME } from "../reducers/user";
 
@@ -206,6 +207,26 @@ function* removeDisagreeCard(action) {
 }
 
 
+function uploadImageAPI(data) {
+    return axios.post('/card/images', data)
+}
+
+function* uploadImage(action) {
+    try {
+         const result = yield call(uploadImageAPI, action.data);
+        yield put({
+            type: UPLOAD_IMAGE_SUCCESS,
+            data: result.data
+        })
+    } catch (error) {
+        yield put({
+            type: UPLOAD_IMAGE_FAILURE,
+            data: error.response.data,
+        })
+    }
+}
+
+
 
 
 
@@ -247,6 +268,10 @@ function* watchRemoveDisagreeCard() {
     yield takeLatest(REMOVE_DISAGREE_CARD_REQUEST, removeDisagreeCard)
 }
 
+function* watchUploadImage() {
+    yield takeLatest(UPLOAD_IMAGE_REQUEST, uploadImage)
+}
+
 
 
 
@@ -261,6 +286,7 @@ export default function* cardSaga() {
         fork(watchRemoveAgreeCard),
         fork(watchDisagreeCard),
         fork(watchRemoveDisagreeCard),
+        fork(watchUploadImage),
         
     ])
 }

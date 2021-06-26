@@ -1,11 +1,40 @@
 const express = require('express');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
+const multerS3 = require('multer-s3');
+const AWS = require('aws-sdk');
+
 const { Card, User, Comment, Image } = require('../models');
 const {isLoggedIn} =require('./middlewares');
 
 const router = express.Router()
 
+try{
+    fs.accessSync('uploads');
+}catch (error) {
+    console.log('uploads폴더가 없음으로 생성합니다.');
+    fs.mkdirSync('uploads');
+}
 
-router.post('/', isLoggedIn, async (req, res, next) => {
+AWS.config.update({
+    accessKeyId: process.env.S3_ACCESS_KEY_ID,
+    secretAccessKey: process.env.S3_SECRET_ACCESS_KEY,
+    region: 'ap-northeast-2'
+})
+
+const upload = multer({
+    storage: multerS3({
+        s3: new AWS.S3(),
+        bucket: 'moview-s3',
+        key(req, file, cb){
+            cb(null, `original/${Date.now()}_${path.basename(file.originalname)}`)
+        }
+    }),
+    limits: { fileSize: 20 * 1024 * 1024 },
+})
+
+router.post('/', isLoggedIn, upload.none(), async (req, res, next) => {
     try {
         const card = await Card.create({
             content: req.body.content,
@@ -13,12 +42,18 @@ router.post('/', isLoggedIn, async (req, res, next) => {
             star: req.body.star,
             UserId :req.user.id
         })
+        if(req.body.image){
+            const image = await Image.create({ src: req.body.image });
+            await card.addImages(image)
+        }
         const cardContent = await Card.findOne({
             where: {id : card.id},
             attributes: {
                 exclude: ['createdAt', 'updatedAt']
               },
             include: [{
+                model: Image,
+            },{
                 model: User,
                 attributes: ['id', 'nickname']
             },{
@@ -27,6 +62,14 @@ router.post('/', isLoggedIn, async (req, res, next) => {
                     model: User,
                     attributes: ['id', 'nickname']
                 }]
+            },{
+                model: User,
+                as: 'Likers',
+                attributes: ['id']
+            },{
+                model: User,
+                as: 'UnLikers',
+                attributes: ['id']
             }]
         })
         
@@ -36,6 +79,12 @@ router.post('/', isLoggedIn, async (req, res, next) => {
         next(error);
     }
 });
+
+
+router.post('/images', isLoggedIn, upload.array('image'), (req, res, next) => {
+    console.log(req.files);
+    res.json(req.files.map((v) => v.location))
+})
 
 router.get('/:cardId', async (req, res, next) => {
     try{
