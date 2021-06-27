@@ -81,11 +81,6 @@ export const UPLOAD_IMAGE_FAILURE = 'UPLOAD_IMAGE_FAILURE';
 
 export const REMOVE_IMAGE = 'REMOVE_IMAGE';
 
-export const addCard = (data) => ({
-    type: ADD_CARD_REQUEST,
-    data,
-})
-
 const reducer = (state = initialState, action) => produce(state, (draft) => {
     switch (action.type) { 
         case LOAD_CARD_REQUEST:
@@ -234,7 +229,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
             draft.uploadImageDone = false;
             draft.uploadImageError = null;
         break;
-        case UPLOAD_IMAGE_SUCCESS:{
+        case UPLOAD_IMAGE_SUCCESS: {
             draft.imagePaths = action.data;
             draft.uploadImageLoading = false;
             draft.uploadImageDone = true;

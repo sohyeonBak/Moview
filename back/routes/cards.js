@@ -1,6 +1,6 @@
 const express = require('express');
 const { Op } = require('sequelize');
-const { Card, User, Comment} = require('../models');
+const { Card, User, Comment, Image} = require('../models');
 
 const router = express.Router();
 
@@ -25,6 +25,8 @@ router.get('/', async (req, res, next) => {
                 model: User,
                 as: 'UnLikers',
                 attributes:['id']
+            },{
+                model: Image
             },{
                 model: Comment,
                 include: [{
