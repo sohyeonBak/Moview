@@ -100,6 +100,8 @@ router.get('/:cardId', async (req, res, next) => {
                 model: User,
                 attributes: ['id', 'nickname']
             },{
+                model: Image,
+            },{
                 model: User,
                 as: 'Likers',
                 attributes:['id']
