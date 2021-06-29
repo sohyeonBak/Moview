@@ -103,7 +103,7 @@ const ReviewCard = ({card}) => {
             <div className={Card.card}>
                 <div className={Card.cardTitle} >
                     <h2>{card?.title}</h2>
-                    <p>{card?.User.nickname}</p>
+                    <p>{card?.User?.nickname}</p>
                 </div>
                 <div className={Card.cardImage}>
                     <img src={`${card?.Images[0]?.src || '' }`} alt={card?.Images[0]?.src || ''} />

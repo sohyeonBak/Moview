@@ -23,7 +23,6 @@ function loadCardAPI(data) {
 function* loadCard(action) {
     try{
         const result = yield call(loadCardAPI, action.data);
-        console.log(action.data)
         yield put({
             type: LOAD_CARD_SUCCESS,
             data: result.data,
@@ -64,7 +63,6 @@ function addCardAPI(data) {
 function* addCard(action) {
     try {
         const result = yield call(addCardAPI, action.data);
-        console.log(action.data)
         yield put({
             type: ADD_CARD_SUCCESS,
             data: result.data
@@ -88,7 +86,6 @@ function removeCardAPI(data) {
 function* removeCard(action) {
     try {
         const result = yield call(removeCardAPI, action.data);
-        console.log(action.data)
         yield put({
             type: REMOVE_CARD_SUCCESS,
             data: result.data
@@ -113,7 +110,6 @@ function addCommentAPI(data) {
 function* addComment(action) {
     try {
         const result = yield call(addCommentAPI, action.data);
-        console.log(result)
         yield put({
             type: ADD_COMMENT_SUCCESS,
             data: result.data
@@ -134,7 +130,6 @@ function agreeCardAPI(data) {
 function* agreeCard(action) {
     try {
         const result = yield call(agreeCardAPI, action.data);
-        console.log(result)
         yield put({
             type: AGREE_CARD_SUCCESS,
             data: result.data

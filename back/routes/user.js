@@ -21,7 +21,6 @@ router.get('/', async (req, res, next) => {
           attributes: ['id', 'title', 'content'],
         }]
       })
-      console.log(fullUserWithoutPassword)
       res.status(200).json(fullUserWithoutPassword);
     } else {
       res.status(200).json(null);
@@ -102,7 +101,6 @@ router.patch('/nickname', isLoggedIn, async (req, res, next) => {
     },{
       where: {id: req.user.id}
     })
-    console.log(req.body.nickname)
     res.status(200).json({ nickname: req.body.nickname })
   } catch(error) {
     console.error(error);

@@ -31,7 +31,7 @@
   .cardImage {
     height: auto;
     img {
-      width: 100%;
+      width: 98%;
       object-fit: cover;
     }
   }
@@ -64,6 +64,7 @@
   .reviewconent {
     padding-left: 1rem;
     padding-bottom: 0.8rem;
+    box-sizing: border-box;
     .star {
       padding-top: 1em;
       width: 25%;

@@ -79,7 +79,6 @@ function signUpAPI(data) {
 function* signUp(action) {
     try {
         const result = yield call(signUpAPI, action.data);
-        console.log(result)
         yield put({
             type: SIGN_UP_SUCCESS,
         })
@@ -99,7 +98,6 @@ function changeNicknameAPI(data) {
 function* changeNickname(action) {
     try {
         const result = yield call(changeNicknameAPI, action.data);
-        console.log('ji')
         yield put({
             type: CHANGE_NICKNAME_SUCCESS,
             data: result.data,
