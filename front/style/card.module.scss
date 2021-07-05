@@ -31,7 +31,8 @@
   .cardImage {
     height: auto;
     img {
-      width: 99%;
+      width: 100%;
+      box-sizing: border-box;
       object-fit: cover;
     }
   }

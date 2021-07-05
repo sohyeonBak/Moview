@@ -6,7 +6,7 @@ const multerS3 = require('multer-s3');
 const AWS = require('aws-sdk');
 
 const { Card, User, Comment, Image } = require('../models');
-const {isLoggedIn} =require('./middlewares');
+const {isLoggedIn} = require('./middlewares');
 
 const router = express.Router()
 

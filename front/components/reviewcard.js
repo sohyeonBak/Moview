@@ -40,7 +40,7 @@ const ReviewCard = ({card}) => {
     },[ThumbUp, ThumbDown])
 
     const onAgree = useCallback(()=>{
-        if(me===null){
+        if(!me){
             window.alert('로그인이 필요합니다.')
         }else {
             
@@ -52,7 +52,7 @@ const ReviewCard = ({card}) => {
     },[card])
     
     const onDeleteAgree = useCallback(()=>{
-        if(me===null){
+        if(!me){
             window.alert('로그인이 필요합니다.')
         }else {
             dispatch({
@@ -65,7 +65,7 @@ const ReviewCard = ({card}) => {
 
 
     const onDisagree = useCallback(()=>{
-        if(me===null){
+        if(!me){
             window.alert('로그인이 필요합니다.')
         }else {
             dispatch({
@@ -76,7 +76,7 @@ const ReviewCard = ({card}) => {
     },[card])
 
     const onDeleteDisagree = useCallback(()=>{
-        if(me===null){
+        if(!me){
             window.alert('로그인이 필요합니다.')
         }else {
             dispatch({
