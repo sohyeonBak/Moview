@@ -134,7 +134,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
         case REMOVE_CARD_SUCCESS:
             draft.removeCardLoading = false;
             draft.removeCardDone = true;
-            draft.mainCards = draft.mainCards.filter((v)=>v.id !==action.data.CardId);
+            draft.mainCards=draft.mainCards.filter((v)=>v.id !==action.data.CardId);
         break;
         case REMOVE_CARD_FAILURE:
             draft.removeCardLoading = false;

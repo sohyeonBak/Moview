@@ -231,7 +231,7 @@ router.delete('/:cardId', isLoggedIn, async (req, res, next) => {
                 UserId: req.user.id
             }
         })
-        res.json({CardId: req.params.cardId,})
+        res.json({CardId: parseInt(req.params.cardId, 10),})
     }catch(error) {
         console.error(error);
         next(error)

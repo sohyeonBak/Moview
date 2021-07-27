@@ -10,6 +10,7 @@ import { AGREE_CARD_REQUEST,
 from '../reducers/card';
 import Stars from './stars';
 import moment from 'moment';
+import Router from 'next/router';
 
 moment.locale('ko');
 
@@ -22,69 +23,77 @@ const ReviewCard = ({card}) => {
     
     
     const { me } = useSelector((state) => state.user);
+    const { loadCardsDone } = useSelector((state)=> state.card);
     const dispatch = useDispatch();
 
     useEffect(()=>{
-        const findLikers = card?.Likers?.map((v)=>v.id===me?.id)
-        const findUnLikers = card?.UnLikers?.map((v)=>v.id===me?.id)
-        if(findLikers?.includes(true)===true){
-            ThumbUp(true);
-        }else{
-            ThumbUp(false);
+        if(loadCardsDone){
+            Router.push('/')
         }
-        if(findUnLikers?.includes(true)===true){
-            ThumbDown(true)
-        }else{
-            ThumbDown(false)
-        }
-    },[ThumbUp, ThumbDown])
+    },[loadCardsDone])
+    // useEffect(()=>{
+    //     if(loadCardsDone){
+    //         Router.push('/')
+    //     }
+    //     const findLikers = card?.Likers?.map((v)=>v.id===me?.id)
+    //     const findUnLikers = card?.UnLikers?.map((v)=>v.id===me?.id)
+    //     if(findLikers?.includes(true)===true){
+    //         ThumbUp(true);
+    //     }else{
+    //         ThumbUp(false);
+    //     }
+    //     if(findUnLikers?.includes(true)===true){
+    //         ThumbDown(true)
+    //     }else{
+    //         ThumbDown(false)
+    //     }
+    // },[ThumbUp, ThumbDown, loadCardsDone])
 
-    const onAgree = useCallback(()=>{
-        if(!me){
-            window.alert('로그인이 필요합니다.')
-        }else {
-            
-            dispatch({
-                type: AGREE_CARD_REQUEST,
-                data: {cardId: card?.id}
-            })
-        }
-    },[card])
+    // const onAgree = useCallback(()=>{
+    //     if(!me){
+    //         window.alert('로그인이 필요합니다.')
+    //     }else {
+    //         dispatch({
+    //             type: AGREE_CARD_REQUEST,
+    //             data: {cardId: card?.id}
+    //         })
+    //     }
+    // },[card])
     
-    const onDeleteAgree = useCallback(()=>{
-        if(!me){
-            window.alert('로그인이 필요합니다.')
-        }else {
-            dispatch({
-                type: REMOVE_AGREE_CARD_REQUEST,
-                data: {cardId: card?.id}
-            })
-        }
+    // const onDeleteAgree = useCallback(()=>{
+    //     if(!me){
+    //         window.alert('로그인이 필요합니다.')
+    //     }else {
+    //         dispatch({
+    //             type: REMOVE_AGREE_CARD_REQUEST,
+    //             data: {cardId: card?.id}
+    //         })
+    //     }
         
-    },[card])
+    // },[card])
 
 
-    const onDisagree = useCallback(()=>{
-        if(!me){
-            window.alert('로그인이 필요합니다.')
-        }else {
-            dispatch({
-                type: DISAGREE_CARD_REQUEST,
-                data: {cardId: card?.id}
-            })
-        }
-    },[card])
+    // const onDisagree = useCallback(()=>{
+    //     if(!me){
+    //         window.alert('로그인이 필요합니다.')
+    //     }else {
+    //         dispatch({
+    //             type: DISAGREE_CARD_REQUEST,
+    //             data: {cardId: card?.id}
+    //         })
+    //     }
+    // },[card])
 
-    const onDeleteDisagree = useCallback(()=>{
-        if(!me){
-            window.alert('로그인이 필요합니다.')
-        }else {
-            dispatch({
-                type: REMOVE_DISAGREE_CARD_REQUEST,
-                data: {cardId: card?.id}
-            })
-        }
-    },[card])
+    // const onDeleteDisagree = useCallback(()=>{
+    //     if(!me){
+    //         window.alert('로그인이 필요합니다.')
+    //     }else {
+    //         dispatch({
+    //             type: REMOVE_DISAGREE_CARD_REQUEST,
+    //             data: {cardId: card?.id}
+    //         })
+    //     }
+    // },[card])
 
     const onDeleteCard = useCallback(()=>{
         dispatch({
@@ -110,13 +119,13 @@ const ReviewCard = ({card}) => {
                 <div className={Card.cardReaction} >
                     <div className={Card.like} >
                         {notThumbUp
-                            ? <span onClick={onDeleteAgree} className="material-icons">thumb_up</span>
-                            : <span onClick={onAgree} className="material-icons">thumb_up_off_alt</span>
+                            ? <span className="material-icons">thumb_up</span>
+                            : <span className="material-icons">thumb_up_off_alt</span>
                         }
                         <em>{card?.Likers?.length}</em>
                         {notThumbDown
-                            ? <span onClick={onDeleteDisagree} className="material-icons">thumb_down</span>
-                            : <span onClick={onDisagree} className="material-icons">thumb_down_off_alt</span>
+                            ? <span className="material-icons">thumb_down</span>
+                            : <span className="material-icons">thumb_down_off_alt</span>
                         }
                         <em>{card?.UnLikers?.length}</em>
                     </div>

@@ -1,1 +1,1 @@
-export const backURL = 'http://api.fromtulip.com';
+export const backURL = process.env.NODE_ENV === 'production' ? 'http://api.fromtulip.com' : 'http://localhost:80';

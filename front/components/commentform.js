@@ -13,10 +13,12 @@ const CommentForm = ({card}) => {
         setComment(e.target.value)
     },[])
 
+
     const onCommentSubmit = useCallback(()=>{
         if(me===null){
             window.alert('로그인이 필요합니다.')
         }else {
+            setComment('');
             dispatch({
                 type: ADD_COMMENT_REQUEST,
                 data: { content: comment, cardId : card.id, User: { id : me.id, nickname: me.nickname} }
