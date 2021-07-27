@@ -17,20 +17,19 @@ moment.locale('ko');
 
 const ReviewCard = ({card}) => {
     const [ comment, setComment ] = useState(false);
+    const [ notThumbUp, ThumbUp ] = useState('thumb_up_off_alt');
+    const [ notThumbDown, ThumbDown ] = useState('thumb_down_off_alt');
 
-    const [ notThumbUp, ThumbUp ] = useState(false);
-    const [ notThumbDown, ThumbDown ] = useState(false);
-    
-    
     const { me } = useSelector((state) => state.user);
-    const { loadCardsDone } = useSelector((state)=> state.card);
+    const { loadCardsDone, agreeCardDone } = useSelector((state)=> state.card);
     const dispatch = useDispatch();
 
     useEffect(()=>{
         if(loadCardsDone){
             Router.push('/')
         }
-    },[loadCardsDone])
+    },[loadCardsDone, agreeCardDone])
+    
     // useEffect(()=>{
     //     if(loadCardsDone){
     //         Router.push('/')
@@ -118,16 +117,10 @@ const ReviewCard = ({card}) => {
                 </div>
                 <div className={Card.cardReaction} >
                     <div className={Card.like} >
-                        {notThumbUp
-                            ? <span className="material-icons">thumb_up</span>
-                            : <span className="material-icons">thumb_up_off_alt</span>
-                        }
+                        {/* <span className="material-icons" onClick={onHandleLike}>{notThumbUp}</span>
                         <em>{card?.Likers?.length}</em>
-                        {notThumbDown
-                            ? <span className="material-icons">thumb_down</span>
-                            : <span className="material-icons">thumb_down_off_alt</span>
-                        }
-                        <em>{card?.UnLikers?.length}</em>
+                        <span className="material-icons" onClick={onHandleUnLike}>{notThumbDown}</span>
+                        <em>{card?.UnLikers?.length}</em> */}
                     </div>
                     <div className={Card.comment}>
                         <span onClick={onComment} className="material-icons">chat_bubble_outline</span>
