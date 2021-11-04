@@ -175,6 +175,7 @@ function* disagreeCard(action) {
             data: result.data
         })
     } catch (error) {
+        console.log(error)
         yield put({
             type: DISAGREE_CARD_FAILURE,
             data: error.response.data,

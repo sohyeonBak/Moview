@@ -196,9 +196,9 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
             draft.disagreeCardError = null;
         break;
         case DISAGREE_CARD_SUCCESS:{
-            const card = draft.mainCards.find((v)=> v.id === action.data.CardId);
-            if(card){
-                card.UnLikers.push(action.data.UserId)
+            const cards = draft.mainCards.find((v)=> v.id === action.data.CardId);
+            if(cards){
+                cards.UnLikers.push(action.data.UserId)
             }
             draft.disagreeCardLoading = false;
             draft.disagreeCardDone = true;
@@ -214,8 +214,8 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
             draft.disagreeCardError = null;
         break;
         case REMOVE_DISAGREE_CARD_SUCCESS:{
-            const card = draft.mainCards.find((v)=> v.id === action.data.CardId);
-            card.UnLikers = card.UnLikers.filter((v)=> v.id !== action.data.UserId)
+            const cards = draft.mainCards.find((v)=> v.id === action.data.CardId);
+            cards.UnLikers = cards.UnLikers.filter((v)=> v.id !== action.data.UserId);
             draft.disagreeCardLoading = false;
             draft.disagreeCardDone = true;
         }

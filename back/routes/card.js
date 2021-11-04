@@ -163,7 +163,7 @@ router.patch('/:cardId/agree', async (req, res, next) => {
         if(!card) {
             return res.status(403).send('존재하지 않는 게시물입니다.')
         }
-        
+        console.log(card)
         await card.addLikers(req.user.id)
         await card.removeUnLikers(req.user.id)
         res.json({CardId: card.id, UserId: req.user.id})
@@ -181,6 +181,7 @@ router.delete('/:cardId/agree', async (req, res, next) => {
         if(!card) {
             return res.status(403).send('존재하지 않는 게시물입니다.')
         }
+        
         await card.removeLikers(req.user.id)
         res.json({CardId: card.id, UserId: req.user.id})
     } catch(error) {
@@ -197,6 +198,7 @@ router.patch('/:cardId/disagree', async (req, res, next) => {
         if(!card) {
             return res.status(403).send('존재하지 않는 게시물입니다.')
         }
+        console.log(card)
         await card.addUnLikers(req.user.id)
         await card.removeLikers(req.user.id)
         res.json({CardId: card.id, UserId: req.user.id})
@@ -214,7 +216,7 @@ router.delete('/:cardId/disagree', async (req, res, next) => {
         if(!card) {
             return res.status(403).send('존재하지 않는 게시물입니다.')
         }
-        console.log(card)
+        
         await card.removeUnLikers(req.user.id)
         res.json({CardId: card.id, UserId: req.user.id})
     } catch(error) {
