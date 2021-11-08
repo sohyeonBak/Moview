@@ -12,7 +12,7 @@ const ReviewForm = () => {
     const [ hoverRating, setHoverRating ] = useState(0);
     const imageRef = useRef()
     
-    const { addCardDone, imagePaths } = useSelector((state)=> state.card);
+    const { addCardDone, imagePaths, uploadImageDone } = useSelector((state)=> state.card);
     const dispatch = useDispatch();
 
     useEffect(()=>{
@@ -91,7 +91,7 @@ const ReviewForm = () => {
                 </div>
                 {imagePaths.map((v,i)=>{
                     <div key={v} className={Edit.roadimage}>
-                        <img src={v.replace(/\/thumb\//, '/original/')} alt={v} />
+                        <img src={v} alt={v} />
                         <button onClick={onRemoveImage(i)}>제거</button>
                     </div>
                 })}

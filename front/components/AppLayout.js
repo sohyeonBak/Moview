@@ -28,56 +28,46 @@ const AppLayout = ({children}) => {
 
     return(
         <>
-            <header className={Header.allheader}>
-                <div className={Header.layout}>
-                    <div className={Header.header}>
-                        <div className={Header.homebtn}>
-                            <h1>
-                                <a onClick={goHome}>MOVIEW</a>
-                            </h1>
-                        </div>
-                        <div className={Header.searchcon}>
-                            <form>
-                                <input type="text" placeholder="찾으시는 영화 제목을 입력하세요." />
-                                <button>
-                                    <span className="material-icons">search</span>
-                                </button>
-                            </form>
-                        </div>
-                        {me 
-                        ? (<ul className={Header.menubtns}>
-                            <li>
-                                <a onClick={onLogout}>로그아웃</a>
-                            </li>
-                            <li className={Header.review}>
-                                <Link href="/editreview">
-                                    <a>
-                                        <span className="material-icons">add_circle_outline</span>
-                                    </a>
-                                </Link>
-                            </li>
-                            <li className={Header.mypage} >
-                                <Link href="/mypage">
-                                    <a >
-                                        <span className={`material-icons ${Header.outlined}`}>account_circle</span>
-                                    </a>
-                                </Link>
-                            </li>
-                        </ul>)
-                        : (<ul className={Header.menubtns}>
-                            <li className={Header.login} >
-                                <Link href="/login">
-                                    <a>로그인</a>
-                                </Link>
-                            </li>
-                        </ul>)
-                        }
+            <header className={Header.Header}>
+                <div className={Header.Layout}>
+                    <div className={Header.Homebtn}>
+                        <h1>
+                            <a onClick={goHome}>Cliche</a>
+                        </h1>
+                    </div>
+                    <div className={Header.MenuList}>
+                    {me 
+                    ? (<ul className={Header.Menubtns}>
+                        <li>
+                            <a onClick={onLogout}>Logout</a>
+                        </li>
+                        <li className={Header.review}>
+                            <Link href="/editreview">
+                                <a><span className="material-icons">add_circle_outline</span></a>
+                            </Link>
+                        </li>
+                        <li className={Header.mypage} >
+                            <Link href="/mypage">
+                                <a ><span className={`material-icons`}>account_circle</span></a>
+                            </Link>
+                        </li>
+                    </ul>)
+                    : (<ul className={Header.Menubtns}>
+                        <li className={Header.login} >
+                            <Link href="/login">
+                                <a>Login</a>
+                            </Link>
+                        </li>
+                    </ul>)
+                    }
                     </div>
                 </div>
             </header>      
             <section>
-                <div className={Content.allcontents}>
-                    {children}
+                <div className={Content.Contents}>
+                    <div className={Content.Layout}>
+                        {children}
+                    </div>
                 </div>
             </section>
         </>  

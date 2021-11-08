@@ -101,17 +101,16 @@ const ReviewCard = ({card}) => {
                 </div>
                 <div className={Card.cardReaction} >
                     <div className={Card.like} >
-                         <span className="material-icons" onClick={handleLike}>{me&&card?.Likers?.length > 0?'thumb_up' : 'thumb_up_off_alt'}</span>
+                         <span className={`material-icons ${Card.materialIcons}`} onClick={handleLike}>{me&&card?.Likers?.length > 0?'thumb_up' : 'thumb_up_off_alt'}</span>
                         <em>{card?.Likers?.length}</em>
-                        <span className="material-icons" onClick={handleDisLike}>{me&&card?.UnLikers?.length > 0 ? 'thumb_down' : 'thumb_down_off_alt'}</span>
+                        <span className={`material-icons ${Card.materialIcons}`} onClick={handleDisLike}>{me&&card?.UnLikers?.length > 0 ? 'thumb_down' : 'thumb_down_off_alt'}</span>
                         <em>{card?.UnLikers?.length}</em>
                     </div>
                     <div className={Card.comment}>
-                        <span onClick={onComment} className="material-icons">chat_bubble_outline</span>
+                        <span onClick={onComment} className={`material-icons ${Card.materialIcons}`}>chat_bubble_outline</span>
                         {me?.id === card?.User.id
                         ? (<>
-                            <span className="material-icons">edit</span>
-                            <span onClick={onDeleteCard} className="material-icons">remove_circle_outline</span>
+                            <span onClick={onDeleteCard} className={`material-icons ${Card.materialIcons}`}>remove_circle_outline</span>
                         </>)
                         : ''
                         }

@@ -6,9 +6,9 @@ const StarsForm = ({index, rating, hoverRating, onHoverStar, onLeaveStar, onClic
     
 	const fillStar = useMemo(()=>{
 		if(hoverRating >= index) {
-			return "#156015"
+			return "#D72661"
 		} else if(!hoverRating&&rating>=index) {
-			return "#156015"
+			return "#D72661"
 		}
 		return "#dbdbdb"
 	},[index, rating, hoverRating])

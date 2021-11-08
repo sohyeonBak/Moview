@@ -40,27 +40,28 @@ const LoginForm = () => {
     },[email, password])
 
     return(
-        <>
-        <form >
-            <div className={Login.loginzone}>
-                <label>아이디</label>
-                <br />
-                <input type="emain" value={email} onChange={onChangeId} />    
+        <div className={Login.Login}>
+            <form >
+                <div className={Login.loginzone}>
+                    <label>ID</label>
+                    <br />
+                    <input type="emain" value={email} onChange={onChangeId} />    
+                
+                    <label>Password</label>
+                    <br />
+                    <input type="password" value={password} onChange={onChangePassword} />    
+                    <a onClick={onSubmit} className={Login.finallogin}> 확인</a>
+                    <div className={Login.Signup}>
+                        <Link href="/signup">
+                            <a className={Login.signtoup}>회원가입 하러가기</a>
+                        </Link>
+                    </div> 
+                </div>
+                   
+            </form>    
             
-                <label>비밀번호</label>
-                <br />
-                <input type="password" value={password} onChange={onChangePassword} />    
-            </div>
-            <div className={Login.loginconfirm}>
-                <Link href="/signup">
-                    <a className={Login.signtoup}>회원가입</a>
-                </Link>
-                <a onClick={onSubmit} className={Login.finallogin}> 확인</a>
-            </div> 
-        </form>    
-        
-         
-    </>       
+            
+        </div>       
     );}
 
 export default LoginForm;

@@ -1,34 +1,63 @@
 @import "./reset.scss";
 @import "./layout";
 
-.signupzone {
-  width: 100%;
-  font-family: $defaultFont;
-  border: 1px solid #c4c4c4;
-  border-radius: 3px;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
-  div {
-    padding-left: 1rem;
-    margin-top: 1rem;
-    input {
-      width: 93%;
-      height: 35px;
-      border: 1px solid #c4c4c4;
-      background-color: #fff;
-      margin-top: 0.5rem;
+.SignUp {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  form {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
+    border: 1px solid #c4c4c4;
+    border-radius: 3px;
+    .signupzone {
+      width: 300px;
+      box-sizing: border-box;
+      margin-top: 2rem;
+      label {
+        width: 100%;
+        display: inline-block;
+        font-family: $titleFont;
+        font-size: 14px;
+        margin-top: 1.5rem;
+      }
+      input {
+        width: 100%;
+        display: inline-block;
+        border: 1px solid #c4c4c4;
+        margin-top: 0.5rem;
+        height: 30px;
+        box-sizing: border-box;
+        &:focus {
+          outline: none;
+          padding-left: 0.5rem;
+        }
+      }
+      p {
+        font-family: $defaultFont;
+        font-size: 12px;
+        color: #d72661;
+        font-weight: 600;
+      }
+      .signupconfirm {
+        width: 100%;
+        button {
+          display: inline-block;
+          width: 80px;
+          height: 30px;
+          background-color: #464549;
+          color: #fff;
+          font-family: $defaultFont;
+          text-align: center;
+          line-height: 30px;
+          font-size: 14px;
+          float: right;
+          margin-top: 1rem;
+          cursor: pointer;
+        }
+      }
     }
-  }
-}
-
-.signupconfirm {
-  text-align: right;
-  width: 100%;
-  button {
-    width: 20%;
-    height: 40px;
-    background-color: #156015;
-    color: #ffffff;
-    margin-top: 1rem;
   }
 }

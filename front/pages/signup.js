@@ -10,9 +10,7 @@ import wrapper from '../store/configureStore';
 const Signup = () => {
     return(
         <AppLayout>
-            <div>
-                <SignUpForm />
-            </div>        
+            <SignUpForm />       
         </AppLayout>
     )
 }

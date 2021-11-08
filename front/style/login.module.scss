@@ -1,49 +1,70 @@
 @import "./reset.scss";
 @import "./layout";
 
-.loginzone {
-  font-family: $defaultFont;
-  border: 1px solid #c4c4c4;
-  border-radius: 3px;
-  padding-top: 0.5rem;
-  label {
-    margin-left: 1rem;
-  }
-  input {
-    margin-left: 1rem;
-    margin-top: 0.5rem;
-    width: 93%;
-    height: 45px;
+.Login {
+  display: flex;
+  justify-content: center;
+  width: 800px;
+  form {
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 500px;
     border: 1px solid #c4c4c4;
-    background-color: #fff;
-    margin-bottom: 1rem;
-  }
-}
-.loginconfirm {
-  font-family: $defaultFont;
-  text-align: right;
-  display: inline-block;
-  margin-top: 1rem;
-
-  .signtoup {
-    display: inline-block;
-    width: 20%;
-    height: 40px;
-    background-color: #c4c4c4;
-    color: #ffffff;
-    text-align: center;
-    line-height: 35px;
-    vertical-align: middle;
-  }
-  .finallogin {
-    width: 20%;
-    margin-left: 1rem;
-    background-color: #156015;
-    display: inline-block;
-    color: #ffffff;
-    text-align: center;
-    height: 40px;
-    vertical-align: middle;
-    line-height: 40px;
+    border-radius: 3px;
+    .loginzone {
+      width: 300px;
+      box-sizing: border-box;
+      margin-top: 2rem;
+      label {
+        width: 100%;
+        display: inline-block;
+        font-family: $titleFont;
+        font-size: 14px;
+        margin-top: 1.5rem;
+      }
+      input {
+        width: 100%;
+        display: inline-block;
+        border: 1px solid #c4c4c4;
+        margin-top: 0.5rem;
+        height: 30px;
+        box-sizing: border-box;
+        font-size: 12px;
+        font-family: $titleFont;
+        color: #949494;
+        &:focus {
+          outline: none;
+          padding-left: 0.5rem;
+        }
+      }
+      .finallogin {
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background-color: #464549;
+        color: #fff;
+        font-family: $defaultFont;
+        text-align: center;
+        line-height: 30px;
+        font-size: 14px;
+        float: right;
+        margin-top: 1rem;
+        cursor: pointer;
+      }
+    }
+    .Signup {
+      width: 100%;
+      margin-top: 8rem;
+      font-family: $defaultFont;
+      text-align: center;
+      a {
+        border-bottom: 1px solid #c4c4c4;
+        font-size: 14px;
+        color: #c4c4c4;
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+      }
+    }
   }
 }

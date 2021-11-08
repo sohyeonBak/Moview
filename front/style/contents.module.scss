@@ -1,8 +1,15 @@
-.allcontents {
+.Contents {
+  width: 100%;
   display: flex;
   justify-content: center;
   margin-top: 30px;
-  div {
-    width: 600px;
+  .Layout {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div {
+      width: 600px;
+    }
   }
 }

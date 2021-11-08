@@ -39,37 +39,38 @@ const SignUpForm = () => {
     },[email, nickname, password, checkPassword])
 
     return(
-        <>
+        <div className={SignUp.SignUp}>
         <form>
             <div className={SignUp.signupzone}>
-                <div>
-                    <label>아이디</label>
-                    <br />
-                    <input type="email" value={email} onChange={setEmail} />    
-                </div>
-                <div>
-                    <label>닉네임</label>
-                    <br />
-                    <input type="text" value={nickname} onChange={setNickname} />    
-                    </div>
-                <div>
-                    <label>비밀번호</label>
-                    <br />
-                    <input type="password" value={password} onChange={setPassword} />    
-                    </div>
-                <div>
-                    <label>비밀번호 확인</label>
-                    <br />
-                    <input type="password" value={checkPassword} onChange={onConfirmPassword} />    
-                </div>
+            
+                <label>ID</label>
+                <br />
+                <input type="email" value={email} onChange={setEmail} />    
+            
+            
+                <label>Nick-Name</label>
+                <br />
+                <input type="text" value={nickname} onChange={setNickname} />    
+            
+            
+                <label>Password</label>
+                <br />
+                <input type="password" value={password} onChange={setPassword} />    
+            
+            
+                <label>Confirmed Password</label>
+                <br />
+                <input type="password" value={checkPassword} onChange={onConfirmPassword} />    
+            
                 {errorPassword && <p>비밀번호가 일치하지 않습니다.</p>}
+                <div className={SignUp.signupconfirm}>
+                    <button onClick={onSignUp} >확인</button>
+                </div>
             </div>  
-            <div className={SignUp.signupconfirm}>
-                <button onClick={onSignUp} >확인</button>
-            </div>
+            
         </form>
           
-        </>   
+        </div>   
     );}
 
 export default SignUpForm;

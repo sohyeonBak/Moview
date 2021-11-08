@@ -8,7 +8,7 @@ import CommentZone from '../style/comment.module.scss';
 const Comment = ({card}) => {
 
     return(
-        <div className={CommentZone.comments} >
+        <div className={CommentZone.Comments} >
             <ul className={CommentZone.commentslist} >
                 {card.Comments.map(comment=> <CommentList key={comment.id} comment={comment} />)}
             </ul>

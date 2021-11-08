@@ -36,9 +36,7 @@ const Home = () => {
 
     return(
         <AppLayout>
-            <div>
-               {mainCards.map(card=><ReviewCard key={card.id} card={card} />)}
-            </div>
+            {mainCards.map(card=><ReviewCard key={card.id} card={card} />)}
         </AppLayout>
     )
   

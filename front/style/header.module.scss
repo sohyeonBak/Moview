@@ -1,114 +1,57 @@
 @import "reset.scss";
 @import "layout";
 
-.allheader {
-  height: 80px;
-  border-bottom: 1px solid #c4c4c4;
-}
-.layout {
-  position: relative;
-  margin: 0 auto;
-  width: 1280px;
-
-  .header {
-    height: 80px;
+.Header {
+  height: 50px;
+  border-bottom: 1px solid $elementColor;
+  display: flex;
+  justify-content: center;
+  .Layout {
+    width: 800px;
     display: flex;
-    flex-flow: row nowrap;
-    width: 100%;
-    .homebtn {
-      flex: 1 1 40%;
+    flex-direction: row;
+    .Homebtn {
+      width: 50%;
+      padding-left: 1rem;
       h1 {
+        font-size: 24px;
+        font-weight: 700;
         font-family: $titleFont;
-        line-height: 80px;
-        padding-left: 1rem;
+        margin-top: 0.6rem;
         a {
-          color: #db0000;
           cursor: pointer;
         }
       }
     }
-    .searchcon {
-      flex: 1 2 15%;
+    .MenuList {
+      width: 50%;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: $defaultFont;
-      form {
-        width: 340px;
-        input {
-          width: 80%;
-          height: 40px;
-          background-color: #ffffff;
-          border: 1px solid #c4c4c4;
-          box-sizing: border-box;
-          border-radius: 3px;
-          padding-left: 0.5rem;
-        }
-        ::placeholder {
-          color: #c4c4c4;
-        }
-        button {
-          width: 45px;
-          height: 40px;
-          margin-left: -2px;
-          vertical-align: bottom;
-          background-color: #c4c4c4;
-          border: 1px solid #c4c4c4;
-          box-sizing: border-box;
-          border-radius: 0px 3px 3px 0px;
-          span {
-            color: #ffffff;
+      justify-content: flex-end;
+      .Menubtns {
+        display: flex;
+        flex-direction: row;
+        li {
+          padding-right: 1rem;
+          margin-top: 0.8rem;
+          &:first-child {
+            font-family: $titleFont;
+            font-size: 14px;
+            font-weight: 600;
+            padding-top: 0.1rem;
+            cursor: pointer;
           }
         }
       }
     }
-    .menubtns {
-      flex: 1 1 45%;
-      display: flex;
-      justify-content: flex-end;
-      flex-wrap: nowrap;
-      font-family: $defaultFont;
-      padding-right: 1rem;
-      li {
-        line-height: 80px;
-        padding-left: 0.7rem;
-        a {
-          text-overflow: ellipsis;
-        }
-      }
-      .login,
-      .signup {
-        flex-shrink: 2;
-      }
-      .review,
-      .mypage {
-        flex-shrink: 1;
-        font-size: 30px;
-        padding-top: 0.2rem;
-        span {
-          font-size: 30px;
-        }
-      }
-    }
-  }
-}
-
-@include desktop {
-  .layout {
-    width: 100%;
   }
 }
 
 @include mobile {
-  .layout {
-    .header {
-      .searchcon {
-        flex: 1 2 10%;
-        form {
-          width: 300px;
-          input {
-            width: 70%;
-          }
+  .Header {
+    .MenuList {
+      .Menubtns {
+        li {
+          padding-right: 0.5rem;
         }
       }
     }
