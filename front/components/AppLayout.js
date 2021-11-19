@@ -5,7 +5,7 @@ import Header from '../style/header.module.scss';
 import Content from '../style/contents.module.scss';
 import Router from 'next/router';
 import MustLogin from './modal/mustLogin';
-import ModalLogout from './modal/ModalLogout';
+import ModalLogout from './modal/modalLogout';
 
 import { useSelector } from 'react-redux';
 
