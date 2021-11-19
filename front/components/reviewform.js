@@ -7,7 +7,9 @@ import StarsForm from './starsform';
 
 const ReviewForm = () => {
     const [ title, setTitle ] = useState('');
+    const [ alretTitle, setAlretTitle ] = useState(false);
     const [ content, setContent ] = useState('');
+    const [ alretContent, setAlretContent ] = useState(false);
     const [ rating, setRating ] = useState(0);
     const [ hoverRating, setHoverRating ] = useState(0);
     const imageRef = useRef()
@@ -35,7 +37,6 @@ const ReviewForm = () => {
     },[imageRef.current])
 
     const onChangeImage = useCallback((e)=>{
-        console.log(e.target.files)
         const imageFormData = new FormData();
         [].forEach.call(e.target.files, (f) => {
             imageFormData.append('image', f)
@@ -66,15 +67,21 @@ const ReviewForm = () => {
         imagePaths.forEach((p)=>{
             formData.append('image', p);
         });
-        formData.append('title', title);
-        formData.append('content', content);
-        formData.append('star', rating);
-        dispatch({
-            type: ADD_CARD_REQUEST,
-            data: formData
-        })
+        if(title!=='' && content!=='') {
+            formData.append('title', title);
+            formData.append('content', content);
+            formData.append('star', rating);
+            dispatch({
+                type: ADD_CARD_REQUEST,
+                data: formData
+            })
+        }else {
+            if(title==='') setAlretTitle(true)
+            if(content=='') setAlretContent(true)
+        }
+
         
-    },[title, content, rating, imagePaths])
+    },[title, content, rating, imagePaths,setAlretTitle,setAlretContent])
     
     
     return(
@@ -82,25 +89,28 @@ const ReviewForm = () => {
             <div className={Edit.editform}>
                 <div className={Edit.editcon} >
                     <input type="text" className={Edit.edittitle} placeholder="제목" value={title} onChange={onChangeTitle} />
+                    {alretTitle?<p>제목을 입력해주세요.</p> : ''}
                     <textarea placeholder="리뷰 내용을 입력해주세요" value={content} onChange={onChangeContent} />
+                    {alretContent?<p>내용을 입력해주세요.</p> : ''}
                     <input type="file" name="image" className={Edit.editfile} ref={imageRef} onChange={onChangeImage} />
                     <button className={Edit.editfilebtn} onClick={onPickImage}>
                         <span className="material-icons">folder_open</span>
-                        업로드할 이미지를 선택해주세요
+                        업로드할 이미지를 선택해주세요. (1장)
                     </button>
                 </div>
-                {imagePaths.map((v,i)=>{
-                    <div key={v} className={Edit.roadimage}>
-                        <img src={v} alt={v} />
-                        <button onClick={onRemoveImage(i)}>제거</button>
+                {uploadImageDone?
+                    <div className={Edit.roadimage}>
+                        <img src={imagePaths[0]} alt='' />
+                        <button onClick={onRemoveImage(0)}>제거</button>
                     </div>
-                })}
+                :''}
                 <p>별점을 채워주세요.</p>
                 <div className={Edit.starzone}>
                     <div className={Edit.starline}>
                         {[1, 2, 3, 4, 5].map((inx) => {
                             return (
                                 <StarsForm 
+                                    key={inx}
                                     index={inx}
                                     rating={rating}
                                     hoverRating={hoverRating}

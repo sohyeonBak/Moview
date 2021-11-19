@@ -1,0 +1,57 @@
+@import "./reset.scss";
+@import "./layout";
+
+.BackGrond {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($color: #000000, $alpha: 0.3);
+  display: flex;
+  justify-content: center;
+  .Alret {
+    width: 300px;
+    height: 120px;
+    background-color: #fff;
+    padding-top: 1.5rem;
+    box-sizing: border-box;
+    p {
+      text-align: center;
+      font-family: $defaultFont;
+      font-size: 16px;
+    }
+    ul {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      margin-top: 0.7rem;
+      li {
+        text-align: center;
+        width: 90px;
+        height: 40px;
+        background-color: rgb(207, 207, 207);
+        border-radius: 20px;
+        font-family: $defaultFont;
+        font-size: 14px;
+        line-height: 40px;
+        cursor: pointer;
+        &:last-child {
+          width: 150px;
+          margin-left: 0.5rem;
+          background-color: $elementColor;
+
+          a {
+            color: #fff;
+            height: 100%;
+            display: inline-block;
+          }
+        }
+      }
+      .logout {
+        width: 90px !important;
+        color: #fff;
+      }
+    }
+  }
+}

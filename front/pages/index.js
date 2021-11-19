@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { END } from '@redux-saga/core';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import '../style/card.module.scss';
 
 
 const Home = () => {
+    const [loginModal, setLoginModal] = useState(false);
     const { mainCards, hasMoreCards, loadCardsLoading } = useSelector((state) => state.card);
     
     const dispatch=useDispatch();
@@ -35,8 +36,8 @@ const Home = () => {
     
 
     return(
-        <AppLayout>
-            {mainCards.map(card=><ReviewCard key={card.id} card={card} />)}
+        <AppLayout loginModal={loginModal} setLoginModal={setLoginModal}>
+            {mainCards.map(card=><ReviewCard key={card.id} card={card} setLoginModal={setLoginModal}/>)}
         </AppLayout>
     )
   

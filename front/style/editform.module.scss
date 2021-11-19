@@ -13,19 +13,30 @@
     padding-left: 1rem;
     border-bottom: 1px solid #c4c4c4;
     padding-bottom: 1rem;
+    box-sizing: border-box;
     .edittitle {
-      width: 91%;
+      width: 95%;
       height: 45px;
       border: 1px solid #c4c4c4;
       padding-left: 1rem;
+      box-sizing: border-box;
+    }
+    p {
+      font-size: 12px;
+      font-family: $defaultFont;
+      color: tomato;
+      padding: 0.5rem;
+      text-align: left;
     }
     textarea {
-      width: 91%;
+      width: 95%;
       height: 245px;
       border: 1px solid #c4c4c4;
       margin-top: 1rem;
       padding-top: 1rem;
       padding-left: 1rem;
+      box-sizing: border-box;
+      font-family: $defaultFont;
     }
     .editfile {
       display: none;
@@ -49,6 +60,10 @@
     padding-left: 1rem;
     border-bottom: 1px solid #c4c4c4;
     padding-bottom: 1rem;
+    box-sizing: border-box;
+    img {
+      width: 450px;
+    }
     button {
       width: 15%;
       height: 35px;
@@ -84,6 +99,16 @@
     margin-top: 1rem;
     a {
       color: #ffffff;
+    }
+  }
+}
+
+@include mobile {
+  .editform {
+    .roadimage {
+      img {
+        width: 70%;
+      }
     }
   }
 }

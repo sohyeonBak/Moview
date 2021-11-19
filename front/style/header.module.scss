@@ -48,10 +48,17 @@
 
 @include mobile {
   .Header {
-    .MenuList {
-      .Menubtns {
-        li {
-          padding-right: 0.5rem;
+    width: 100%;
+    .Layout {
+      width: 100%;
+      .MenuList {
+        .Menubtns {
+          li {
+            padding-right: 0.5rem;
+            &:last-child {
+              padding-right: 1rem;
+            }
+          }
         }
       }
     }

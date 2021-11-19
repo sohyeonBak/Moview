@@ -4,7 +4,7 @@ import { ADD_COMMENT_REQUEST } from '../reducers/card';
 import CommentZone from '../style/comment.module.scss';
 
 
-const CommentForm = ({card}) => {
+const CommentForm = ({card, setLoginModal}) => {
     const [ comment, setComment ] = useState('')
     const {me} = useSelector((state) => state.user);
     const dispatch = useDispatch()
@@ -15,8 +15,8 @@ const CommentForm = ({card}) => {
 
 
     const onCommentSubmit = useCallback(()=>{
-        if(me===null){
-            window.alert('로그인이 필요합니다.')
+        if(!me){
+            setLoginModal(true)
         }else {
             setComment('');
             dispatch({
@@ -24,7 +24,7 @@ const CommentForm = ({card}) => {
                 data: { content: comment, cardId : card.id, User: { id : me.id, nickname: me.nickname} }
             })
         }
-    },[me, card, comment])
+    },[me, card, comment, setLoginModal])
 
     return(
         <div className={CommentZone.commentedit}>

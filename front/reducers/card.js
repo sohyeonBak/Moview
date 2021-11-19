@@ -241,6 +241,7 @@ const reducer = (state = initialState, action) => produce(state, (draft) => {
         break;
         case REMOVE_IMAGE:
             draft.imagePaths = draft.imagePaths.filter((v, i) => i !== action.data);
+            draft.uploadImageDone = false;
         break;
         default:
             break;

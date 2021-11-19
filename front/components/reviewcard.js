@@ -15,7 +15,7 @@ import Router from 'next/router';
 moment.locale('ko');
 
 
-const ReviewCard = ({card}) => {
+const ReviewCard = ({card, setLoginModal}) => {
     const [ comment, setComment ] = useState(false);
 
     const [like, setLike] = useState(false);
@@ -40,6 +40,9 @@ const ReviewCard = ({card}) => {
     },[])
     
     const handleDisLike = useCallback(()=>{
+        if(!me){
+            setLoginModal(true)
+        }
         if(like){
             setDisLikeUp()
             setLikeUp()
@@ -56,9 +59,12 @@ const ReviewCard = ({card}) => {
                 data: {cardId: card?.id}
             })
         }
-    },[like, setLikeUp, setDisLikeUp, card])
+    },[like, setLikeUp, setDisLikeUp, card, me, setLoginModal])
 
     const handleLike = useCallback(()=>{
+        if(!me){
+            setLoginModal(true)
+        }
         if(disLike){
             setLikeUp();
             setDisLikeUp();
@@ -75,7 +81,7 @@ const ReviewCard = ({card}) => {
                 data: {cardId: card?.id}
             })
         }
-    },[disLike, setLikeUp, setDisLikeUp, card])
+    },[disLike, setLikeUp, setDisLikeUp, card, me, setLoginModal])
     
 
     const onDeleteCard = useCallback(()=>{
@@ -90,7 +96,8 @@ const ReviewCard = ({card}) => {
     },[setComment])
 
     return(
-        <>
+        <>  
+            
             <div className={Card.card}>
                 <div className={Card.cardTitle} >
                     <h2>{card?.title}</h2>
@@ -128,7 +135,7 @@ const ReviewCard = ({card}) => {
                     <em>{moment(card?.createdAt).format('YYYY.MM.DD')}</em>
                 </div>
             </div>
-            {comment&&<Comment card={card} />}
+            {comment&&<Comment card={card} setLoginModal={setLoginModal}/>}
         </>
     );}
 

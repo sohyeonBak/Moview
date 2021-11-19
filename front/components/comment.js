@@ -5,14 +5,14 @@ import CommentZone from '../style/comment.module.scss';
 
 
 
-const Comment = ({card}) => {
+const Comment = ({card, setLoginModal}) => {
 
     return(
         <div className={CommentZone.Comments} >
             <ul className={CommentZone.commentslist} >
                 {card.Comments.map(comment=> <CommentList key={comment.id} comment={comment} />)}
             </ul>
-            <CommentForm card={card} />
+            <CommentForm card={card} setLoginModal={setLoginModal}/>
         </div>    
     );}
 

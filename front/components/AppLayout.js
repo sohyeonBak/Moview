@@ -1,24 +1,26 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import Header from '../style/header.module.scss';
 import Content from '../style/contents.module.scss';
 import Router from 'next/router';
+import MustLogin from './modal/mustLogin';
+import ModalLogout from './modal/ModalLogout';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutRequestAction } from '../reducers/user';
 
-const AppLayout = ({children}) => {
+const AppLayout = ({children, loginModal, setLoginModal}) => {
+    const [alretLogout, setAlretLogout] = useState(false)
     const { me, logOutDone } = useSelector((state) => state.user);
-    const dispatch = useDispatch()
     
     const goHome = useCallback(()=>{
         Router.push('/')
     },[])
 
     const onLogout = useCallback(()=>{
-        dispatch(logoutRequestAction())
-    },[])
+        setAlretLogout(true)
+    },[setAlretLogout])
 
     useEffect(()=>{
         if(logOutDone){
@@ -28,6 +30,8 @@ const AppLayout = ({children}) => {
 
     return(
         <>
+            {loginModal?<MustLogin setLoginModal={setLoginModal}/>:''}
+            {alretLogout?<ModalLogout setAlretLogout={setAlretLogout}/>:''}
             <header className={Header.Header}>
                 <div className={Header.Layout}>
                     <div className={Header.Homebtn}>
@@ -61,6 +65,7 @@ const AppLayout = ({children}) => {
                     </ul>)
                     }
                     </div>
+        
                 </div>
             </header>      
             <section>

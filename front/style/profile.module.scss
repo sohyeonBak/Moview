@@ -13,20 +13,24 @@
 
     h3 {
       padding-top: 0.5rem;
+      font-family: $titleFont;
+      font-size: 14px;
+      padding-top: 1rem;
     }
     form {
       padding-top: 0.5rem;
       input {
+        box-sizing: border-box;
         width: 77%;
-        height: 45px;
+        height: 30px;
         background-color: #ffffff;
         border: 1px solid #c4c4c4;
       }
       button {
         width: 15%;
-        height: 45px;
+        height: 30px;
         margin-left: 0.5rem;
-        background-color: #156015;
+        background-color: #464549;
         color: #ffffff;
       }
     }
@@ -38,6 +42,9 @@
     p {
       padding-top: 0.5rem;
       font-size: 16px;
+      font-family: $titleFont;
+      font-size: 14px;
+      padding-top: 1rem;
     }
     ul {
       padding-top: 0.5rem;
@@ -45,20 +52,20 @@
         margin-bottom: 0.5rem;
         background-color: #fff;
         border: 1px solid #c4c4c4;
-        height: 70px;
-        width: 90%;
+        height: 60px;
         font-size: 14px;
-        width: 92%;
+        width: 95%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
         padding-right: 1rem;
+        box-sizing: border-box;
         .title {
-          line-height: 70px;
+          line-height: 60px;
           padding-left: 1rem;
         }
         .con {
-          line-height: 70px;
+          line-height: 60px;
           padding-left: 3rem;
           color: #c4c4c4;
         }
