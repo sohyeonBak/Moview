@@ -7,8 +7,8 @@ import Router from 'next/router';
 import MustLogin from './modal/mustLogin';
 import ModalLogout from './modal/ModalLogout';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { logoutRequestAction } from '../reducers/user';
+import { useSelector } from 'react-redux';
+
 
 const AppLayout = ({children, loginModal, setLoginModal}) => {
     const [alretLogout, setAlretLogout] = useState(false)
