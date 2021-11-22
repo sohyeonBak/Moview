@@ -1,4 +1,5 @@
 # Moview
+![main](https://user-images.githubusercontent.com/76677897/142824779-672c88e3-2d49-48ad-8a56-fc627e52085e.png)
 
 ## 프로젝트 소개 💡
 
