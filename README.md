@@ -3,10 +3,10 @@
 ## 프로젝트 소개 💡
 
 영화 리뷰 SNS로 개인계정으로 영화 리뷰 작성, 공감/비공감, 댓글쓰기 같은 기능으로 영화 내용을 소통할 수 있는 페이지
+</br>
 
 
-
-### Build&Start
+## Build&Start 🏷
 
 Frontend Build
 ```
@@ -23,7 +23,7 @@ sudo npm start app.js
 
 
 
-### Stack ⚒
+## Stack ⚒
 
 * Frontend
     * HTML/CSS
@@ -44,7 +44,7 @@ sudo npm start app.js
 * Tool
     * VScode
 
-### Skill 🔍
+## Skill 🔍
 
 1. 1. Next.js의 getServerSideProps를 이용한 SSR 페이지 제작
 2. 회원가입
@@ -56,13 +56,13 @@ sudo npm start app.js
 8. 댓글 작성
 9. Redux 상태관리를 통한 랜딩 UI
 
-### Study 📌
+## Study 📌
 
 `프로젝트 `
 
 - Velog : <https://velog.io/@sohyeonbak_oly/Moview-%EC%98%81%ED%99%94-%EB%A6%AC%EB%B7%B0-SNS>
 
-### 배포
+## 배포
 
 `AWS EC2`
 
